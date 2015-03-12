@@ -56,7 +56,7 @@
                 @include('deal.ajax.input_cate')
             </div>
 
-            <div class="form-group" id="title_thai">
+            <div class="form-group" id="title_TH">
                 {{ Form::label('input_titleth','หัวข้อ (ไทย)',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
                     {{ Form::text('input_titleth', null, array('class'=>'form-control', 'id'=>'input_titleth')) }}
@@ -79,7 +79,7 @@
                 </div>
             </div>
             
-            <div class="form-group" id="detail_thai">
+            <div class="form-group" id="detail_TH">
                 {{ Form::label('input_detailth', 'รายละเอียด (ไทย)', array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
                     {{ Form::textarea('input_detailth', null, array('class'=>'form-control', 'id'=>'input_detailth', 'rows'=>'5' )) }}

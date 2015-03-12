@@ -10,7 +10,13 @@ class CardController extends BaseController {
     
     
     public function index(){
-        return View::make('card.index');
+        $card = Card::orderBy('ca_card_credate', 'ASC')
+                ->join('ca_set_status', 'ca_card.ca_card_status', '=', 'ca_set_status.ca_set_status_id')
+                ->selectJoinSta()
+                ->get();
+
+        return View::make('card.index')
+                ->with('card', $card);
     }
     
     

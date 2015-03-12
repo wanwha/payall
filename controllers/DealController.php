@@ -24,8 +24,8 @@ class DealController extends BaseController {
     public function create(){
         return View::make('deal.create')
                 ->with('list_dealtype', GetList::$list_dealtype)
-                ->with('list_shop', GetText::expld_field( Shop::lists('sh_shop_id') ,Shop::lists('sh_shop_name'), 'thai' ) )
-                ->with('list_branch', GetText::expld_field( Branch::lists('sh_branch_id'), Branch::lists('sh_branch_name'), 'thai' ))
+                ->with('list_shop', GetText::expld_field( Shop::lists('sh_shop_id') ,Shop::lists('sh_shop_name'), 'TH' ) )
+                ->with('list_branch', GetText::expld_field( Branch::lists('sh_branch_id'), Branch::lists('sh_branch_name'), 'TH' ))
                 ->with('catenameth', null )
                 ->with('scatenameth', null );
     }
@@ -112,13 +112,13 @@ class DealController extends BaseController {
         $count_arr_branch_code  = count($arr_branch_code);
         for($i=0; $i<$count_arr_branch_code; $i++){
             $branch_name = Branch::where('sh_branch_code', '=', $arr_branch_code[$i])->select('sh_branch_name')->first(); 
-            $arr_branch_name[$i] = GetText::expld_text($branch_name->sh_branch_name, 'thai');
+            $arr_branch_name[$i] = GetText::expld_text($branch_name->sh_branch_name, 'TH');
         }
         $branch_nameth = implode(", ",$arr_branch_name);
         
         return View::make('deal.show')
             ->with('deal',$deal)
-            ->with('branch_nameth', GetText::expld_field( Branch::lists('sh_branch_id'), Branch::lists('sh_branch_name'), 'thai' ))
+            ->with('branch_nameth', GetText::expld_field( Branch::lists('sh_branch_id'), Branch::lists('sh_branch_name'), 'TH' ))
             ->with('catenameth', $catenameth->de_set_cate_nameth )
             ->with('scatenameth', $scatenameth->de_set_scate_nameth )
             ->with('branch_nameth', $branch_nameth);
@@ -146,8 +146,8 @@ class DealController extends BaseController {
         return View::make('deal.edit')
                 ->with('deal',$deal)
                 ->with('list_dealtype', GetList::$list_dealtype)
-                ->with('list_shop', GetText::expld_field( Shop::lists('sh_shop_id') ,Shop::lists('sh_shop_name'), 'thai' ) )
-                ->with('list_branch', GetText::expld_field( Branch::lists('sh_branch_id'), Branch::lists('sh_branch_name'), 'thai' ))
+                ->with('list_shop', GetText::expld_field( Shop::lists('sh_shop_id') ,Shop::lists('sh_shop_name'), 'TH' ) )
+                ->with('list_branch', GetText::expld_field( Branch::lists('sh_branch_id'), Branch::lists('sh_branch_name'), 'TH' ))
                 ->with('catenameth', $catenameth->de_set_cate_nameth )
                 ->with('scatenameth', $scatenameth->de_set_scate_nameth )
                 ->with('arr_branch_id', $arr_branch_id);
@@ -255,7 +255,7 @@ class DealController extends BaseController {
             $branchname = Branch::where('sh_branch_shopcode', '=', $shop->sh_shop_code)->lists('sh_branch_name');
                     
             return View::make('deal.ajax.input_branch')
-                    ->with('list_branch', GetText::expld_field( $branchid, $branchname, 'thai' ))
+                    ->with('list_branch', GetText::expld_field( $branchid, $branchname, 'TH' ))
                     ->render();
         }
         $this->create() ;

@@ -40,11 +40,11 @@
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>ถอนเครดิต')) }}</li>
             </ul>  
         </li>
-        <li class="">
-            {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-building-o"></i><span class="menu-text"> จัดการพินการ์ด </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}     
+        <li class="{{ Request::is('card*')?'active open':'' }}">
+            {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-ticket"></i><span class="menu-text"> จัดการพินการ์ด </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}     
             <ul class="submenu">
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>สร้างพินการ์ด')) }}</li>
-                <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายการพินการ์ด')) }}</li>
+                <li class="{{ Request::is('card*')?'active':'' }}">{{ HTML::decode(link_to('card', '<i class="menu-icon fa fa-caret-right"></i>รายการพินการ์ด')) }}</li>
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายการขาย')) }}</li>
             </ul>  
         </li>
@@ -54,16 +54,16 @@
                 <li class="{{ Request::is('deal*')?'active':'' }}">{{ HTML::decode(link_to('deal', '<i class="menu-icon fa fa-caret-right"></i>ดีล/คูปอง')) }}</li>
             </ul> 
         </li>
-        <li class="">
+        <li class="{{ Request::is('shop*')?'active open':'' }}{{ Request::is('branch*')?'active open':'' }}">
             {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-shopping-cart"></i><span class="menu-text"> จัดการร้านค้า </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}
             <ul class="submenu">
-                <li class="">{{ HTML::decode(link_to('shop', '<i class="menu-icon fa fa-caret-right"></i>ร้านค้า')) }}</li>
+                <li class="{{ Request::is('shop*')?'active':'' }}{{ Request::is('branch*')?'active':'' }}">{{ HTML::decode(link_to('shop', '<i class="menu-icon fa fa-caret-right"></i>ร้านค้า')) }}</li>
             </ul>
         </li>
-        <li class="">
-            {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-code-fork "></i><span class="menu-text"> จัดการสาขา </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}
+        <li class="{{ Request::is('businesscenter*')?'active open':'' }}">
+            {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-building-o"></i><span class="menu-text"> จัดการศูนย์ธุรกิจ </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}
             <ul class="submenu">
-                <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>สาขา')) }}</li>
+                <li class="{{ Request::is('businesscenter*')?'active':'' }}">{{ HTML::decode(link_to('businesscenter', '<i class="menu-icon fa fa-caret-right"></i>ศูนย์ธุรกิจ')) }}</li>
             </ul>
         </li>
         <li class="">

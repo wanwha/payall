@@ -67,7 +67,7 @@
                     <tr>
                         <td class="center"><label class="pos-rel"><input id="{{ 'chkbox-'.$i }}" type="checkbox" class="ace dataTableChkbox" value="{{ $deal->de_deal_id }}" /><span class="lbl"></span></label></td>
                         <td class="center hidden-480">{{ $i }}</td>
-                        <td class="">{{ HTML::Link('deal/'.$deal->de_deal_id, GetText::expld_text($deal->de_deal_title, 'thai')) }}</td>
+                        <td class="">{{ HTML::Link('deal/'.$deal->de_deal_id, GetText::expld_text($deal->de_deal_title, 'TH')) }}</td>
                         <td class="center hidden-480">{{ GetList::$list_dealtype[$deal->de_deal_typeid] }}</td>
                         <td class="center hidden-480">{{ Cate::get_nameth_by_id( Shop::get_cateid_by_code($deal->de_deal_shopcode) ) }}</td>
                         <td class="center">{{ Shop::get_nameth_by_code($deal->de_deal_shopcode) }}</td>
@@ -80,7 +80,7 @@
 
                                 <a href='javascript:void(0)' class="red bootbox-confirm" onclick="
                                     document.getElementById('hidden_rowid').value='{{ $deal->de_deal_id }}';
-                                    document.getElementById('hidden_rowtitle').value='{{ GetText::expld_text($deal->de_deal_title, "thai") }}';
+                                    document.getElementById('hidden_rowtitle').value='{{ GetText::expld_text($deal->de_deal_title, "TH") }}';
                                 "><i class="ace-icon fa fa-trash-o bigger-130"></i></a>
                                 {{ Form::open( array( 'url'=>'deal/'.$deal->de_deal_id, 'id'=>'form-del-'.$deal->de_deal_id ) )}}
                                 {{ Form::hidden( '_method','DELETE' ) }}
@@ -98,7 +98,7 @@
                                         <li>
                                             <a href='javascript:void(0)' class="red bootbox-confirm tooltip-error" data-rel="tooltip" title="Delete" onclick="
                                                 document.getElementById('hidden_rowid').value='{{ $deal->de_deal_id }}';
-                                                document.getElementById('hidden_rowtitle').value='{{ GetText::expld_text($deal->de_deal_title, "thai") }}';
+                                                document.getElementById('hidden_rowtitle').value='{{ GetText::expld_text($deal->de_deal_title, "TH") }}';
                                             "><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span></a>
                                         </li>
                                     </ul>

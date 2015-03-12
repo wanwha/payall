@@ -17,7 +17,7 @@ class Shop extends Eloquent {
         
     public static function get_nameth_by_code($code) {
         $shop = Shop::where('sh_shop_code', '=', $code)->select('sh_shop_name')->first();
-        $shop_nameth = GetText::expld_text($shop->sh_shop_name, 'thai');
+        $shop_nameth = GetText::expld_text($shop->sh_shop_name, 'TH');
         return $shop_nameth;
     }
     

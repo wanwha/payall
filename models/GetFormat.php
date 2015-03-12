@@ -8,6 +8,7 @@
 
 class GetFormat  {
     
+        // YYYY-MM-DD H:i:s To DD/MM/YYYY 
         public static function format_DateTime($DateTime) {
             $DateTimeArr = explode(" ",$DateTime);
             $Date = $DateTimeArr[0];

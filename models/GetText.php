@@ -13,9 +13,8 @@ class GetText {
     public static function expld_field($id, $field, $lang) {
         
         switch ($lang) {
-            case 'thai': $langCode = 0; break;
-            case 'eng': $langCode = 1; break;
-            case 'japan': $langCode = 2; break;
+            case 'TH': $langCode = 0; break;
+            case 'US': $langCode = 1; break;
             default: $langCode = 0; break;
         }
         
@@ -44,9 +43,8 @@ class GetText {
     public static function expld_text($txet, $lang) {
 
         switch ($lang) {
-            case 'thai': $langCode = 0; break;
-            case 'eng': $langCode = 1; break;
-            case 'japan': $langCode = 2; break;
+            case 'TH': $langCode = 0; break;
+            case 'US': $langCode = 1; break;
             default: $langCode = 0; break;
         }
         

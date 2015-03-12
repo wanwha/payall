@@ -56,10 +56,10 @@
                 @include('deal.ajax.input_cate')
             </div>
 
-            <div class="form-group" id="title_thai">
+            <div class="form-group" id="title_TH">
                 {{ Form::label('input_titleth','หัวข้อ (ไทย)',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
-                    {{ Form::text('input_titleth', GetText::expld_text($deal->de_deal_title, 'thai'), array('class'=>'form-control', 'id'=>'input_titleth')) }}
+                    {{ Form::text('input_titleth', GetText::expld_text($deal->de_deal_title, 'TH'), array('class'=>'form-control', 'id'=>'input_titleth')) }}
                 </div>
                 <div class="col-xs-6 col-sm-2">
                     {{ Form::select('selectLang_title', Getlist::$list_lang, null, array('id'=>'selectLang_title', 'class'=>'form-control', 'style'=>'width:98%;')) }}
@@ -72,17 +72,17 @@
             <div class="form-group" id="title_eng">
                 {{ Form::label('input_titleen','หัวข้อ (อังกฤษ)',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
-                    {{ Form::text('input_titleen', GetText::expld_text($deal->de_deal_title, 'eng'), array('class'=>'form-control', 'id'=>'input_titleen')) }}
+                    {{ Form::text('input_titleen', GetText::expld_text($deal->de_deal_title, 'US'), array('class'=>'form-control', 'id'=>'input_titleen')) }}
                 </div>
                 <div class="col-xs-6 col-sm-2">
                     <a href="javascript:void(0)" id="delTitle_eng" class="btn btn-mini btn-light"><i class="fa fa-minus"></i><span style="margin-left:5px;">ลบ</span></a>
                 </div>
             </div>
             
-            <div class="form-group" id="detail_thai">
+            <div class="form-group" id="detail_TH">
                 {{ Form::label('input_detailth', 'รายละเอียด (ไทย)', array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
-                    {{ Form::textarea('input_detailth', GetText::expld_text($deal->de_deal_detail, 'thai'), array('class'=>'form-control', 'id'=>'input_detailth', 'rows'=>'5' )) }}
+                    {{ Form::textarea('input_detailth', GetText::expld_text($deal->de_deal_detail, 'TH'), array('class'=>'form-control', 'id'=>'input_detailth', 'rows'=>'5' )) }}
                 </div>
                 <div class="col-xs-6 col-sm-2">
                     {{ Form::select('selectLang_detail', Getlist::$list_lang, null, array('id'=>'selectLang_detail', 'class'=>'form-control', 'style'=>'width:98%;')) }}
@@ -95,7 +95,7 @@
             <div class="form-group" id="detail_eng">
                 {{ Form::label('input_detailen','รายละเอียด (อังกฤษ)',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
-                    {{ Form::textarea('input_detailen', GetText::expld_text($deal->de_deal_detail, 'eng'), array('class'=>'form-control', 'id'=>'input_detailen', 'rows'=>'5' )) }}
+                    {{ Form::textarea('input_detailen', GetText::expld_text($deal->de_deal_detail, 'US'), array('class'=>'form-control', 'id'=>'input_detailen', 'rows'=>'5' )) }}
                 </div>
                 <div class="col-xs-6 col-sm-2">
                     <a href="javascript:void(0)" id="delDetail_eng" class="btn btn-mini btn-light"><i class="fa fa-minus"></i><span style="margin-left:5px;">ลบ</span></a>

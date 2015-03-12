@@ -33,19 +33,19 @@
 
             <div class="profile-info-row">
                     <div class="profile-info-name"> ชื่อดีล (ไทย) : </div>
-                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_title, 'thai') }}</div>
+                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_title, 'TH') }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> ชื่อดีล (อังกฤษ) : </div>
-                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_title, 'eng') }}</div>
+                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_title, 'US') }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> รายละเอียด (ไทย) : </div>
-                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_detail, 'thai') }}</div>
+                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_detail, 'TH') }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> รายละเอียด (อังกฤษ) : </div>
-                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_detail, 'eng') }}</div>
+                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_detail, 'US') }}</div>
             </div> 
             <div class="profile-info-row">
                     <div class="profile-info-name"> ประเภท : </div>
