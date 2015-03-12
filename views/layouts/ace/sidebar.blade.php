@@ -40,12 +40,12 @@
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>ถอนเครดิต')) }}</li>
             </ul>  
         </li>
-        <li class="{{ Request::is('card*')?'active open':'' }}">
+        <li class="{{ Request::is('card')?'active':'' }}{{ Request::is('card/*')?'active':'' }}{{ Request::is('cardsale*')?'active open':'' }}">
             {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-ticket"></i><span class="menu-text"> จัดการพินการ์ด </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}     
             <ul class="submenu">
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>สร้างพินการ์ด')) }}</li>
-                <li class="{{ Request::is('card*')?'active':'' }}">{{ HTML::decode(link_to('card', '<i class="menu-icon fa fa-caret-right"></i>รายการพินการ์ด')) }}</li>
-                <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายการขาย')) }}</li>
+                <li class="{{ Request::is('card')?'active':'' }}{{ Request::is('card/*')?'active':'' }}">{{ HTML::decode(link_to('card', '<i class="menu-icon fa fa-caret-right"></i>รายการพินการ์ด')) }}</li>
+                <li class="{{ Request::is('cardsale*')?'active':'' }}">{{ HTML::decode(link_to('cardsale', '<i class="menu-icon fa fa-caret-right"></i>รายการขาย')) }}</li>
             </ul>  
         </li>
         <li class="{{ Request::is('deal*')?'active open':'' }}">

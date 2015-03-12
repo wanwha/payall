@@ -38,7 +38,11 @@
             <div class="form-group">
                 {{ Form::label('email','อีเมล',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-8">
-                    {{ Form::email('email',null,array('class'=>'form-control','placeholder'=>'อีเมล')) }}
+                    {{ Form::email('email',null,array(
+                            'class'=>'form-control',
+                            'placeholder'=>'อีเมล',
+                            'required'
+                    )) }}
                 </div>
                  <span  style="color:#dd5a43;" ><b>*</b></span>
             </div>
@@ -46,7 +50,11 @@
             <div class="form-group">
                 {{ Form::label('first_name','ชื่อ',array('class'=>'col-sm-2 control-label')) }}    
                 <div class="col-sm-8">
-                    {{ Form::text('first_name',null,array('class'=>'form-control','placeholder'=>'ชื่อ')) }}
+                    {{ Form::text('first_name',null,array(
+                            'class'=>'form-control',
+                            'placeholder'=>'ชื่อ',
+                            'required'
+                    )) }}
                 </div>
                  <span  style="color:#dd5a43;" ><b>*</b></span>
             </div>
@@ -54,7 +62,11 @@
             <div class="form-group">
                 {{ Form::label('last_name','นามสกุล',array('class'=>'col-sm-2 control-label')) }}    
                 <div class="col-sm-8">
-                    {{ Form::text('last_name',null,array('class'=>'form-control','placeholder'=>'นามสกุล')) }}
+                    {{ Form::text('last_name',null,array(
+                            'class'=>'form-control',
+                            'placeholder'=>'นามสกุล',
+                            'required'
+                    )) }}
                 </div>
                  <span  style="color:#dd5a43;" ><b>*</b></span>
             </div>
@@ -62,7 +74,10 @@
             <div class="form-group">
                 {{ Form::label('password','รหัสผ่าน',array('class'=>'col-sm-2 control-label')) }}    
                 <div class="col-sm-8">
-                    {{ Form::password('password',null,array('class'=>'form-control','placeholder'=>'รหัสผ่าน')) }}
+                    {{ Form::password('password',null,array(
+                            'class'=>'form-control',
+                            'placeholder'=>'รหัสผ่าน',
+                    )) }}
                 </div>
                  <span  style="color:#dd5a43;" ><b>*</b></span>
             </div>

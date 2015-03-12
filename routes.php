@@ -62,6 +62,7 @@ Route::group(array( 'before'=>'sentry' ),function(){
     Route::resource("businesscenter", ('BusinessCenterController'));
     Route::resource("calendar", ('CalendarController'));
     Route::resource("card", ('CardController'));
+    Route::resource("cardsale", ('CardsaleController'));
     Route::resource("deal", ('DealController'));
     Route::post("deal/ajax_branch", ('DealController@getBranchOptions'));
     Route::post("deal/ajax_cate", ('DealController@getFormCate'));

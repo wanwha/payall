@@ -2,6 +2,6 @@
 
 
 class Group extends Eloquent {
-	protected $table = 'groups';
-	public $timestamps = false;
+    protected $table = 'groups';
+    public $timestamps = false;
 }

@@ -28,7 +28,7 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User {
     protected $hidden = array('password', 'remember_token');
 
 
-
+        
     /*////////////////////////////// Scope //////////////////////////////*/
     public function scopeSelectJoinUsergroup($query) {
         return $query->select(
