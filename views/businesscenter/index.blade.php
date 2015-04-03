@@ -8,13 +8,14 @@
 
 @section('breadcrumbs')
 <ul class="breadcrumb">
-    <li><a href="{{ URL::to('businesscenter') }}"><i class="menu-icon fa fa-code-fork fa-lg"></i>จัดการสาขา</a></li>
+    <li><a href="{{ URL::to('businesscenter') }}"><i class="menu-icon fa fa-building-o fa-lg"></i>จัดการศูนย์ธุรกิจ</a></li>
+    <li class="active">รายการศูนย์ธุรกิจ</li>
 </ul>
 @stop
 
 
 @section('pageheader')
-<h1>รายการสาขา</h1>
+<h1>รายการศูนย์ธุรกิจ</h1>
 @stop
 
 
@@ -74,7 +75,7 @@
                         <td class="center"><label class="pos-rel"><input id="{{ 'chkbox-'.$i }}" type="checkbox" class="ace dataTableChkbox" value="{{ $value->bu_center_id }}" /><span class="lbl"></span></label></td>
                         <td class="hidden">{{ $i }}</td>
                         <td class="hidden-480 center">{{ HTML::link('businesscenter/'.$value->bu_center_id, $value->bu_center_code) }}</td>
-                        <td class="left">{{  $value->bu_center_name }}</td>
+                        <td class="left">{{  GetText::expld_text($value->bu_center_name, 'TH') }}</td>
                         <td class="hidden-480 center">{{ $value->sys_province_name }}</td>
                         <td class="hidden-480 center">{{ GetFormat::format_DateTime ($value->bu_center_updatedate) }}</td>
                         <td class="center">

@@ -183,7 +183,7 @@ class BusinessCenterController extends BaseController {
                         Session::flash('message', 'ลบข้อมูลสาขาเรียบร้อยแล้ว');
                         return Redirect::to('businesscenter');
                     }else{
-                        Session::flash('message', 'ไม่พบข้อมูลที่ต้องการลบ');
+                        Session::flash('danger', 'ไม่พบข้อมูลที่ต้องการลบ');
                         return Redirect::to('businesscenter');
                     }   
                     }else{       

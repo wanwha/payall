@@ -8,13 +8,13 @@
 
 @section('breadcrumbs')
 <ul class="breadcrumb">
-    <li><a href="{{ URL::to('businesscenter') }}"><i class="menu-icon fa fa-code-fork fa-lg"></i>จัดการสาขา</a></li>
-    <li class="active">แก้ไขข้อมูลสาขา</li>
+    <li><a href="{{ URL::to('businesscenter') }}"><i class="menu-icon fa fa-building-o fa-lg"></i>จัดการศูนย์ธุรกิจ</a></li>
+    <li class="active">แก้ไขศูนย์ธุรกิจ</li>
 </ul>
 @stop
 
 @section('pageheader')
-<h1>แก้ไขข้อมูลสาขา</h1>
+<h1>แก้ไขศูนย์ธุรกิจ</h1>
 @stop
 
 @section('pagecontent')
@@ -204,7 +204,7 @@
          <div class="form-group">
             <div class="center">
         {{ Form::submit('บันทึก' ,array('class'=>'btn btn-success')) }}
-        <a class="btn btn-danger" href="{{ URL::to('businesscenter') }}" style="margin-left:7px">ยกเลิก</a>
+        <a class="btn btn-info" href="{{ URL::to('businesscenter') }}" style="margin-left:7px">ยกเลิก</a>
             </div>
         </div>
         {{ Form::close() }}

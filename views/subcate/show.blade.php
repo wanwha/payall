@@ -2,8 +2,7 @@
 
 
 @section('header_script')
-{{ HTML::style('assets/css/ace/jquery-ui.custom.css') }}
-{{ HTML::style('assets/css/ace/jquery.gritter.css') }}
+<!-- header_script -->
 @stop
 
 

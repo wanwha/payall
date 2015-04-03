@@ -2,7 +2,7 @@
 
 
 @section('header_script')
-{{ HTML::style('assets/css/ace/jquery-ui.custom.css') }}
+<!-- header_script -->
 @stop
 
 

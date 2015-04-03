@@ -21,6 +21,7 @@
 
 @section('pagecontent')
 
+
 {{ Form::open() }}
 {{ Form::hidden('hidden_rowid', null, array('id'=>'hidden_rowid')) }}
 {{ Form::hidden('hidden_rowtitle', null, array('id'=>'hidden_rowtitle')) }}
@@ -29,6 +30,10 @@
 {{ Form::open( array( 'url'=>'deal/delall', 'id'=>'form-del-delall') ) }}   
     {{ Form::hidden( '_method','DELETE' ) }}
     {{ Form::hidden('hidden_chkBoxDel', null, array('id'=>'hidden_chkBoxDel')) }}
+{{ Form::close() }}
+
+{{ Form::open( array( 'url'=>'deal/lot', 'id'=>'form-lot') ) }}
+{{ Form::hidden('hidden_dealid', null, array('id'=>'hidden_dealid')) }}
 {{ Form::close() }}
 
 <!-- PAGE CONTENT BEGINS -->
@@ -52,10 +57,10 @@
                         <th class="center hidden-480">ลำดับ</th>
                         <th class="center">ชื่อดีล</th>
                         <th class="center hidden-480">ประเภท</th>
-                        <th class="center hidden-480">หมวดหมู่</th>
                         <th class="center">ร้านค้า</th>
-                        <th class="center">PA</th>
-                        <th class="center">จำนวน/ใช้ไป</th>
+                        <th class="center">ยังไม่จำหน่าย</th>
+                        <th class="center">จำนวนซื้อ</th>
+                        <th class="center">จำนวนใช้</th>
                         <th class="center">ระยะเวลา</th>
                         <th class="center">จัดการ</th>
                     </tr>
@@ -67,20 +72,24 @@
                     <tr>
                         <td class="center"><label class="pos-rel"><input id="{{ 'chkbox-'.$i }}" type="checkbox" class="ace dataTableChkbox" value="{{ $deal->de_deal_id }}" /><span class="lbl"></span></label></td>
                         <td class="center hidden-480">{{ $i }}</td>
-                        <td class="">{{ HTML::Link('deal/'.$deal->de_deal_id, GetText::expld_text($deal->de_deal_title, 'TH')) }}</td>
-                        <td class="center hidden-480">{{ GetList::$list_dealtype[$deal->de_deal_typeid] }}</td>
-                        <td class="center hidden-480">{{ Cate::get_nameth_by_id( Shop::get_cateid_by_code($deal->de_deal_shopcode) ) }}</td>
-                        <td class="center">{{ Shop::get_nameth_by_code($deal->de_deal_shopcode) }}</td>
-                        <td class="center">{{ $deal->de_deal_pa }}</td>
-                        <td class="center">{{ $deal->de_deal_total }}</td>
-                        <td class="center">{{ GetFormat::format_DateTime($deal->de_deal_sdate).' - '.GetFormat::format_DateTime($deal->de_deal_edate) }}</td>
+                        <td class="">{{ HTML::Link('deal/'.$deal->de_deal_id, $deal_title[$i-1]) }}</td>
+                        <td class="center hidden-480">{{ $deal_type[$i-1] }}</td>
+                        <td class="center">{{ $deal_shopname[$i-1] }}</td>
+                        <td class="center">{{ $deal->de_deal_instock }}</td>
+                        <td class="center">{{ $deal->de_deal_bought }}</td>
+                        <td class="center">{{ $deal->de_deal_used }}</td>
+                        <td class="center">{{ $deal_sedate[$i-1] }}</td>
                         <td class="center">
                             <div class="hidden-sm hidden-xs action-buttons">   
-                                {{ HTML::decode(link_to('deal/'.$deal->de_deal_id.'/edit','<i class="ace-icon fa fa-pencil bigger-130"></i>',array('class'=>'green'))) }}
 
+                                <a href='javascript:void(0)' class="blue" onclick="
+                                    document.getElementById('hidden_dealid').value='{{ $deal->de_deal_id }}';
+                                    document.getElementById('form-lot').submit();
+                                "><i class="ace-icon fa fa-plus bigger-130"></i></a>
+                                {{ HTML::decode(link_to('deal/'.$deal->de_deal_id.'/edit','<i class="ace-icon fa fa-pencil bigger-130"></i>',array('class'=>'green'))) }}
                                 <a href='javascript:void(0)' class="red bootbox-confirm" onclick="
                                     document.getElementById('hidden_rowid').value='{{ $deal->de_deal_id }}';
-                                    document.getElementById('hidden_rowtitle').value='{{ GetText::expld_text($deal->de_deal_title, "TH") }}';
+                                    document.getElementById('hidden_rowtitle').value='{{ $deal_title[$i-1] }}';
                                 "><i class="ace-icon fa fa-trash-o bigger-130"></i></a>
                                 {{ Form::open( array( 'url'=>'deal/'.$deal->de_deal_id, 'id'=>'form-del-'.$deal->de_deal_id ) )}}
                                 {{ Form::hidden( '_method','DELETE' ) }}
@@ -98,7 +107,7 @@
                                         <li>
                                             <a href='javascript:void(0)' class="red bootbox-confirm tooltip-error" data-rel="tooltip" title="Delete" onclick="
                                                 document.getElementById('hidden_rowid').value='{{ $deal->de_deal_id }}';
-                                                document.getElementById('hidden_rowtitle').value='{{ GetText::expld_text($deal->de_deal_title, "TH") }}';
+                                                document.getElementById('hidden_rowtitle').value='{{ $deal_title[$i-1] }}';
                                             "><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span></a>
                                         </li>
                                     </ul>

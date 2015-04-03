@@ -42,6 +42,15 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User {
             'users.updated_at'
         );
     }
+    
+    public static function get_name_by_id($id) {
+        try {
+            $user = Sentry::findUserById($id);
+            return $user->first_name.'&nbsp;&nbsp;'.$user->last_name;
+        } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
+            return 'User was not found';
+        }
+    }
 
 
 }

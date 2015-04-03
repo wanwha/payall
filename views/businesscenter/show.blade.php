@@ -9,14 +9,14 @@
 
 @section('breadcrumbs')
 <ul class="breadcrumb">
-    <li><a href="{{ URL::to('businesscenter') }}"><i class="menu-icon fa fa-code-fork fa-lg"></i>จัดการสาขา</a></li>
-    <li class="active">รายละเอียดสาขา</li>
+    <li><a href="{{ URL::to('businesscenter') }}"><i class="menu-icon fa fa-building-o fa-lg"></i>จัดการศูนย์ธุรกิจ</a></li>
+    <li class="active">รายละเอียดศูนย์ธุรกิจ</li>
 </ul>
 @stop
 
 
 @section('pageheader')
-<h1>รายละเอียดสาขา</h1>
+<h1>รายละเอียดศูนย์ธุรกิจ</h1>
 @stop
 
 

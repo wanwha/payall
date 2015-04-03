@@ -252,15 +252,32 @@
                         </tbody>
                     </table>
                 </div>
-                
+ 
             </div>
         </div>
         <!-- /section:elements.tab -->
 
+        
+        <div class="profile-user-info profile-user-info-striped" style="margin-top:35px;">
+            <div class="profile-info-row">
+                    <div class="profile-info-name"> สร้างโดย : </div>
+                    <div class="profile-info-value">{{ $vip_crebyname }}</div>
+                    <div class="profile-info-name"> แก้ไขโดย : </div>
+                    <div class="profile-info-value">{{ $vip_updatebyname }}</div>
+            </div>
+            <div class="profile-info-row">
+                    <div class="profile-info-name"> สร้างเมื่อ : </div>
+                    <div class="profile-info-value">{{ $vip->mb_mem_credate }}</div>
+                    <div class="profile-info-name"> แก้ไขเมื่อ : </div>
+                    <div class="profile-info-value">{{ $vip->mb_mem_updatedate }}</div>
+            </div>
+        </div>
+        
+        
         <div class="row" style="margin-top: 40px;">
             <div class="col-xs-12 center">
-                {{ Form::submit('บันทึก' ,array('class'=>'btn btn-success')) }}
-                {{ HTML::link('vip','ยกเลิก',array('class'=>'btn btn-info','style'=>'margin-left:7px;')) }}
+                {{ Form::submit('บันทึก' ,array('class'=>'btn btn-info')) }}
+                {{ HTML::link('vip','ยกเลิก',array('class'=>'btn btn-default','style'=>'margin-left:7px;')) }}
             </div>
         </div>
             

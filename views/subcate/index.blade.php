@@ -2,7 +2,7 @@
 
 
 @section('header_script')
-{{ HTML::style('assets/css/ace/jquery-ui.custom.css') }}
+<!-- header_script -->
 @stop
 
 
@@ -48,12 +48,12 @@
                 <thead>
                     <tr>
                         <th class="center" width="50"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></th>
-                        <th class="hidden-480 center" width="90">ลำดับ</th>
+                        <th class="center hidden-480" width="80">ลำดับ</th>
                         <th class="center">ชื่อหมวดหมู่ย่อย</th>
-                        <th class="hidden-480 center">หมวดหมู่</th>
-                        <th class="center hidden-480">วันที่แก้ไข</th>
-                        <th class="center">สถานะ</th>
-                        <th class="center">จัดการ</th>
+                        <th class="center hidden-480">หมวดหมู่</th>
+                        <th class="center hidden-480" width="140">วันที่แก้ไข</th>
+                        <th class="center" width="140">สถานะ</th>
+                        <th class="center" width="100">จัดการ</th>
                     </tr>
                 </thead>
 
@@ -62,9 +62,9 @@
                     @foreach( $subcate as $key => $value )
                     <tr>
                         <td class="center"><label class="pos-rel"><input id="{{ 'chkbox-'.$i }}" type="checkbox" class="ace dataTableChkbox" value="{{ $value->de_set_scate_id }}" /><span class="lbl"></span></label></td>
-                        <td class="hidden-480 center">{{ $i }}</td>
-                        <td class="left">{{ HTML::link('subcate/'.$value->de_set_scate_id ,$value->de_set_scate_nameth) }}</td>
-                        <td class="hidden-480 left">{{ $value->de_set_cate_nameth }}</td>
+                        <td class="center hidden-480">{{ $i }}</td>
+                        <td class="">{{ HTML::link('subcate/'.$value->de_set_scate_id ,$value->de_set_scate_nameth) }}</td>
+                        <td class="hidden-480">{{ $value->de_set_cate_nameth }}</td>
                         <td class="center hidden-480">{{ GetFormat::format_DateTime ($value->de_set_scate_updatedate) }}</td>
                         <td class="center">
                             @if($value->de_set_scate_status=='Enable')
@@ -137,10 +137,6 @@
 
 
 @section('footer_script')
-<!--[if lte IE 8]>
-  <script src="{{ asset('assets/js/ace/excanvas.js') }}"></script>
-<![endif]-->
-{{ HTML::script('assets/js/ace/jquery-ui.custom.js') }}
 {{ HTML::script('assets/js/ace/dataTables/jquery.dataTables.js') }}
 {{ HTML::script('assets/js/ace/dataTables/jquery.dataTables.bootstrap.js') }}
 {{ HTML::script('assets/js/ace/dataTables/extensions/TableTools/js/dataTables.tableTools.js') }}
@@ -227,7 +223,7 @@
                         null, null, null, null, null, 
                         {"bSortable": false}
                     ],
-                    "aaSorting": [  ]
+                    "aaSorting": []
                 });
 
 
@@ -408,28 +404,5 @@
     })
 </script>
 
-
-<script type="text/javascript">
-    jQuery(function($) {
-
-            //datepicker plugin
-            //link
-            $('.date-picker').datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-            })
-            //show datepicker when clicking on the icon
-            .next().on(ace.click_event, function(){
-                    $(this).prev().focus();
-            });
-
-    });
-</script>
-
-<script type="text/javascript">
-$('#modalRefunds').on('shown.bs.modal', function () {
-    $('#allow_Refunds_Remark').focus()
-})
-</script>
 @stop
 

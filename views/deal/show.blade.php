@@ -33,27 +33,27 @@
 
             <div class="profile-info-row">
                     <div class="profile-info-name"> ชื่อดีล (ไทย) : </div>
-                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_title, 'TH') }}</div>
+                    <div class="profile-info-value">{{ $deal_titleth }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> ชื่อดีล (อังกฤษ) : </div>
-                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_title, 'US') }}</div>
+                    <div class="profile-info-value">{{ $deal_titleen }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> รายละเอียด (ไทย) : </div>
-                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_detail, 'TH') }}</div>
+                    <div class="profile-info-value">{{ $deal_detailth }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> รายละเอียด (อังกฤษ) : </div>
-                    <div class="profile-info-value">{{ GetText::expld_text($deal->de_deal_detail, 'US') }}</div>
+                    <div class="profile-info-value">{{ $deal_detailen }}</div>
             </div> 
             <div class="profile-info-row">
                     <div class="profile-info-name"> ประเภท : </div>
-                    <div class="profile-info-value">{{ GetList::$list_dealtype[$deal->de_deal_typeid] }}</div>
+                    <div class="profile-info-value">{{ $deal_type }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> ร้านค้า : </div>
-                    <div class="profile-info-value">{{ Shop::get_nameth_by_code($deal->de_deal_shopcode) }}</div>
+                    <div class="profile-info-value">{{ $shop_nameth }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> สาขา : </div>
@@ -61,15 +61,15 @@
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> หมวดหมู่ : </div>
-                    <div class="profile-info-value">{{ $catenameth }}</div>
+                    <div class="profile-info-value">{{ $cate_nameth }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> หมวดหมู่ย่อย : </div>
-                    <div class="profile-info-value">{{ $scatenameth }}</div>
+                    <div class="profile-info-value">{{ $scate_nameth }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> ระยะเวลา : </div>
-                    <div class="profile-info-value">{{ GetFormat::format_DateTime($deal->de_deal_sdate).' - '.GetFormat::format_DateTime($deal->de_deal_edate) }}</div>
+                    <div class="profile-info-value">{{ $deal_sedate }}</div>
             </div>
             <div class="profile-info-row">
                     <div class="profile-info-name"> ราคาเต็ม : </div>
@@ -92,11 +92,27 @@
                     <div class="profile-info-value">{{ $deal->de_deal_point }}</div>
             </div>
             
+        </div> 
+        
+        <div class="profile-user-info profile-user-info-striped" style="margin-top:35px;">
+            <div class="profile-info-row">
+                    <div class="profile-info-name"> สร้างโดย : </div>
+                    <div class="profile-info-value">{{ $deal_crebyname }}</div>
+                    <div class="profile-info-name"> แก้ไขโดย : </div>
+                    <div class="profile-info-value">{{ $deal_updatebyname }}</div>
+            </div>
+            <div class="profile-info-row">
+                    <div class="profile-info-name"> สร้างเมื่อ : </div>
+                    <div class="profile-info-value">{{ date("d/m/Y h:i:s", strtotime($deal->de_deal_credate)) }}</div>
+                    <div class="profile-info-name"> แก้ไขเมื่อ : </div>
+                    <div class="profile-info-value">{{ date("d/m/Y h:i:s", strtotime($deal->de_deal_updatedate)) }}</div>
+            </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin:20px;">
             <div class="col-xs-12 center">
-                {{ HTML::link('deal','ย้อนกลับ',array('class'=>'btn btn-info btn-lg','style'=>'margin:20px;')) }}
+                {{ HTML::link('deal/'.$deal->de_deal_id.'/edit','แก้ไข',array('class'=>'btn btn-info')) }}
+                {{ HTML::link('deal','ย้อนกลับ',array('class'=>'btn btn-default','style'=>'margin-left:7px;')) }}
             </div>
         </div>   
         

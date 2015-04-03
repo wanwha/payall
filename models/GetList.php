@@ -35,11 +35,27 @@ class GetList {
         '1' => 'สมาชิกทั่วไป',
         '2' => 'วีไอพี'
     );
-    
+
     public static $list_locate = array(
         '0' => '',
         '1' => 'บ้าน',
         '2' => 'ที่ทำงาน'
+    );
+    
+    public static $list_statususers = array(
+        'Enable' => 'ใช้งาน',
+        'Disable' => 'ไม่ใช้งาน'
+    );
+    
+    // Shop
+    public static $list_Shoptype = array(
+        '1' => 'ดีล/คูปอง',
+        '2' => 'เพลแครช',
+        '3' => 'Pay All',
+        '1,2,3' => 'ดีล/คูปอง,เพลแครช,Pay All',
+        '1,2'     => 'ดีล/คูปอง,เพลแครช',
+        '1,3'     => 'ดีล/คูปอง,Pay All',
+        '2,3'     => 'เพลแครช,Pay All'
     );
     
     // Deal
@@ -64,6 +80,10 @@ class GetList {
         '3' => 'ไม่อนุมัติ'
     );
     
-    
+    // Report Deal
+    public static $list_statusOrder = array(
+        '1' => 'ใช้แล้ว',
+        '2' => 'ยังไม่ใช้'
+    );
     
 }

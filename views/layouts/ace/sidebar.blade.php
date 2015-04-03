@@ -33,11 +33,11 @@
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>โอนเงิน PA')) }}</li>
             </ul>  
         </li>
-        <li class="">
+        <li class="{{ Request::is('pa*')?'active':'' }}">
             {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-credit-card"></i><span class="menu-text"> จัดการเครดิต </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}     
             <ul class="submenu">
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>ฝากเครดิต')) }}</li>
-                <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>ถอนเครดิต')) }}</li>
+                <li class="{{ Request::is('pa*')?'active':'' }}">{{ HTML::decode(link_to('pa', '<i class="menu-icon fa fa-caret-right"></i>ถอนเครดิต')) }}</li>
             </ul>  
         </li>
         <li class="{{ Request::is('card')?'active':'' }}{{ Request::is('card/*')?'active':'' }}{{ Request::is('cardsale*')?'active open':'' }}">
@@ -66,13 +66,13 @@
                 <li class="{{ Request::is('businesscenter*')?'active':'' }}">{{ HTML::decode(link_to('businesscenter', '<i class="menu-icon fa fa-caret-right"></i>ศูนย์ธุรกิจ')) }}</li>
             </ul>
         </li>
-        <li class="">
+        <li class="{{ Request::is('report*')?'active open':'' }}">
             {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-file-text-o"></i><span class="menu-text"> รายงาน </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}     
             <ul class="submenu">
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายงานสมาชิก')) }}</li>
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายงานเครดิต')) }}</li>
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายงานพินการ์ด')) }}</li>
-                <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายงานดีล/คูปอง')) }}</li>
+                <li class="{{ Request::is('report_deal*')?'active':'' }}">{{ HTML::decode(link_to('report_deal', '<i class="menu-icon fa fa-caret-right"></i>รายงานดีล/คูปอง')) }}</li>
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายงานร้านค้า')) }}</li>
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>รายงานสาขา')) }}</li>
             </ul>  
@@ -81,8 +81,8 @@
             {{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-gear"></i><span class="menu-text"> ตั้งค่า </span><b class="arrow fa fa-angle-down"></b>', array('class'=>'dropdown-toggle') )) }}     
             <ul class="submenu">
                 <li class="">{{ HTML::decode(link_to('#', '<i class="menu-icon fa fa-caret-right"></i>ตั้งค่าข้อมูลธนาคาร')) }}</li>
-                <li class="{{ Request::is('cate*')?'active':'' }}">{{ HTML::decode(link_to('cate', '<i class="menu-icon fa fa-caret-right"></i>ตั้งค่า Category')) }}</li>
-                <li class="{{ Request::is('subcate*')?'active':'' }}">{{ HTML::decode(link_to('subcate', '<i class="menu-icon fa fa-caret-right"></i>ตั้งค่า Sub Category')) }}</li>
+                <li class="{{ Request::is('cate*')?'active':'' }}">{{ HTML::decode(link_to('cate', '<i class="menu-icon fa fa-caret-right"></i>ตั้งค่าหมวดหมู่')) }}</li>
+                <li class="{{ Request::is('subcate*')?'active':'' }}">{{ HTML::decode(link_to('subcate', '<i class="menu-icon fa fa-caret-right"></i>ตั้งค่าหมวดหมู่ย่อย')) }}</li>
             </ul>  
         </li>
         <li class="{{ Request::is('user*')?'active open':'' }}{{ Request::is('permission*')?'active open':'' }}">

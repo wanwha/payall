@@ -17,7 +17,7 @@
         <div class="navbar-header pull-left">
             
             <!-- #section:basics/navbar.layout.brand -->
-            <a href="#" class="navbar-brand"><small>Pay All</small></a>
+            {{ HTML::decode(link_to('home', '<small>Pay All</small></a>', array('class'=>'navbar-brand') )) }}
             <!-- /section:basics/navbar.layout.brand -->
             
             
@@ -39,7 +39,7 @@
                                         <small>Welcome,</small>
                                         {{ Session::get('thisUser')->first_name }}
                                 </span>
-                                <i class="ace-icon fa fa-caret-down"></i>
+                                <i class="ace-icon fa fa-caret-down" style="float:right; margin-top:15px;"></i>
                         </a>
 
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">    

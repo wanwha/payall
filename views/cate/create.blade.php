@@ -30,7 +30,7 @@
              <div class="form-group">
                 {{ Form::label('de_set_cate_nameth','ชื่อหมวดหมู่ภาษาไทย',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-8">
-                    {{ Form::text('de_set_cate_nameth',null,array('class'=>'form-control','placeholder'=>'ชื่อหมวดหมู่ภาษาไทย','required')) }} 
+                    {{ Form::text('de_set_cate_nameth',null,array('class'=>'form-control','required')) }} 
                 </div>
                 <span  style="color:#dd5a43;" ><b>*</b></span>
             </div>
@@ -38,14 +38,14 @@
             <div class="form-group">
                 {{ Form::label('de_set_cate_nameen','ชื่อหมวดหมู่ภาษาอังกฤษ',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-8">
-                    {{ Form::text('de_set_cate_nameen',null,array('class'=>'form-control','placeholder'=>'ชื่อหมวดหมู่ภาษาอังกฤษ','required')) }}
+                    {{ Form::text('de_set_cate_nameen',null,array('class'=>'form-control','required')) }}
                 </div>
                  <span  style="color:#dd5a43;" ><b>*</b></span>
             </div>
             <div class="form-group">
                 {{ Form::label('de_set_cate_remark','หมายเหตุ',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-8">
-                    {{ Form::textarea('de_set_cate_remark',null,array('class'=>'form-control','placeholder'=>'หมายเหตุ')) }}
+                    {{ Form::textarea('de_set_cate_remark',null,array('class'=>'form-control',)) }}
                 </div>
             </div>
             <div class="form-group">
@@ -66,8 +66,8 @@
 
             <div class="form-group">
                 <div class="center">
-                {{ Form::submit('บันทึก',array('class'=>'btn btn-success')) }}
-                <a class="btn btn-info" style="margin-left:7px" href="{{ URL::to('cate') }}">ย้อนกลับ</a>
+                {{ Form::submit('บันทึก',array('class'=>'btn btn-info')) }}
+                <a class="btn btn-default" style="margin-left:7px" href="{{ URL::to('cate') }}">ยกเลิก</a>
                 </div>
             </div>
             

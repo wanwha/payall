@@ -21,6 +21,9 @@
 @section('pagecontent')
 <!-- PAGE CONTENT BEGINS -->
 <div class="left">
+    
+    @include('layouts.ace.message')
+     
     this is Dashboard ... 
 </div>
 <!-- PAGE CONTENT ENDS -->

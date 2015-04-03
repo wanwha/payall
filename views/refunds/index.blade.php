@@ -150,8 +150,7 @@
                     {{ Form::label('allow_Refunds_Remark','หมายเหตุ',array('class'=>'col-sm-2 control-label')) }}  
                     <div class="col-sm-8">
                         <div class="input-group" style="width:100%">
-                            {{ Form::select('allow_Refunds_Remark', GetList::$list_remark , null, array('class'=>'form-control', 'style'=>'width:inherit;')
-                             ) }}
+                            {{ Form::select('allow_Refunds_Remark', GetList::$list_remark , null, array('class'=>'form-control', 'style'=>'width:inherit;')) }}
                         </div>
                     </div>
                 </div>  

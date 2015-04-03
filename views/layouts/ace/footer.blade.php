@@ -4,8 +4,8 @@
         <!-- #section:basics/footer -->
         <div class="footer-content">
             <span class="bigger-120">
-                <span class="blue bolder">PayAll</span>
-                Application &copy; 2015
+                <span class="blue bolder">Pay All</span>
+                Thailand Company. ALL Rights Reserved.
             </span>
             &nbsp; &nbsp;
             Powered by {{ HTML::Link('http://laravel.com','Laravel Framework') }}

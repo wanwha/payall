@@ -53,15 +53,6 @@ class Refund extends Eloquent {
                     'mb_mem.mb_mem_lnameth'  
                 );
         }
-
-        
-        /*///////////////////////// Table Relation /////////////////////////*/
-
-        public function Mem() {
-            return $this->belongsTo('Mem','mb_refund_memid');
-        }
-      
-        
         
         
 }

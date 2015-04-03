@@ -20,6 +20,8 @@ class PermissionController extends BaseController {
     public function create(){
         return View::make('permission.create');
     }
+    
+    
     public function store(){
         $rules = array(
             'name' => 'required',
@@ -41,15 +43,21 @@ class PermissionController extends BaseController {
             return Redirect::to('permission');
         }
     }
+    
+    
     public function show($id){
         $permission = Group::find($id);
         return View::make('permission.show')
             ->with('permission', $permission);
     }
+    
+    
     public function edit($id){
         $permission = Group::find($id);
         return View::make('permission.edit')->with('permission',$permission);
     }
+    
+    
     public function update($id){
         $rules = array(
             'name' => 'required',
@@ -70,6 +78,8 @@ class PermissionController extends BaseController {
             return Redirect::to('permission');
         }
     }
+    
+    
     public function destroy($id){
         $permission = Group::find($id);
         $permission->delete();

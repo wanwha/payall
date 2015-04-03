@@ -46,7 +46,7 @@
             <div class="form-group">
                 {{ Form::label('input_shopid','ร้านค้า', array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
-                    {{ Form::select('input_shopid', $list_shop, Shop::get_id_by_code($deal->de_deal_shopcode), array('class'=>'form-control')) }}
+                    {{ Form::select('input_shopid', $list_shop, $shop_id, array('class'=>'form-control')) }}
                 </div>
             </div>
             
@@ -152,8 +152,8 @@
             
             <div class="row" style="margin-top: 40px;">
                 <div class="col-xs-12 center">
-                    {{ Form::submit('บันทึก' ,array('class'=>'btn btn-success')) }}
-                    {{ HTML::link('deal','ยกเลิก',array('class'=>'btn btn-info','style'=>'margin-left:7px;')) }}
+                    {{ Form::submit('บันทึก' ,array('class'=>'btn btn-info')) }}
+                    {{ HTML::link('deal','ยกเลิก',array('class'=>'btn btn-default','style'=>'margin-left:7px;')) }}
                 </div>
             </div>
 

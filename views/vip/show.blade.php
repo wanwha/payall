@@ -29,15 +29,15 @@
         <div class="row" style="padding-bottom:20px;">
             <span class="btn btn-app btn-sm btn-success pull-right" style="width: initial; margin-left:7px; margin-right:10px; padding-left: 20px; padding-right: 20px; cursor: default;">
                     <span class="line-height-1 smaller-90"> Cash </span><br />
-                    <span class="line-height-1 bigger-170"> {{ $vip->mb_mem_pacash }} </span>
+                    <span class="line-height-1 bigger-170"> {{ number_format($vip->mb_mem_pacash, 2) }} </span>
             </span>
             <span class="btn btn-app btn-sm btn-grey pull-right" style="width: initial; margin-left:7px; padding-left: 20px; padding-right: 20px; cursor: default;">
                     <span class="line-height-1 smaller-90"> Credit </span><br />
-                    <span class="line-height-1 bigger-170"> {{ $vip->mb_mem_pacredit }} </span>
+                    <span class="line-height-1 bigger-170"> {{ number_format($vip->mb_mem_pacredit, 2) }} </span>
             </span>
             <span class="btn btn-app btn-sm btn-yellow pull-right" style="width: initial; margin-left:7px; padding-left: 20px; padding-right: 20px; cursor: default;">
                     <span class="line-height-1 smaller-90"> Point </span><br />
-                    <span class="line-height-1 bigger-170"> {{ $vip->mb_mem_point }} </span>
+                    <span class="line-height-1 bigger-170"> {{ number_format($vip->mb_mem_point) }} </span>
             </span>
         </div>
 
@@ -80,7 +80,7 @@
                         </div>
                         <div class="profile-info-row">
                                 <div class="profile-info-name"> คำนำหน้า : </div>
-                                <div class="profile-info-value">{{ GetList::$list_prefix[$vip->mb_mem_prefix] }}</div>
+                                <div class="profile-info-value">{{ GetText::expld_text($list_prefix[$vip->mb_mem_prefix], 'TH') }}</div>
                                 <div class="profile-info-value hidden-480"></div>
                                 <div class="profile-info-value hidden-480"></div>
                         </div>
@@ -91,7 +91,7 @@
                                 <div class="profile-info-value">{{ $vip->mb_mem_lnameth }}</div>  
                         </div>
                         <div class="profile-info-row">
-                                <div class="profile-info-name"> ชื่อ (ภาาษอังกฤษ) : </div>
+                                <div class="profile-info-name"> ชื่อ (ภาษาอังกฤษ) : </div>
                                 <div class="profile-info-value">{{ $vip->mb_mem_fnameen }}</div>
                                 <div class="profile-info-name"> สกุล (ภาษาอังกฤษ) : </div>
                                 <div class="profile-info-value">{{ $vip->mb_mem_lnameen }}</div>  
@@ -111,6 +111,14 @@
                         <div class="profile-info-row">
                                 <div class="profile-info-name"> เบอร์โทรศัพท์ : </div>
                                 <div class="profile-info-value">{{ $vip->mb_mem_phone }}</div>
+                                <div class="profile-info-value hidden-480"></div>
+                                <div class="profile-info-value hidden-480"></div>
+                        </div>
+                        <div class="profile-info-row">
+                                <div class="profile-info-name"> เพศ : </div>
+                                <div class="profile-info-value">{{ GetText::expld_text($list_gender[$vip->mb_mem_gender], 'TH') }}</div>
+                                <div class="profile-info-value hidden-480"></div>
+                                <div class="profile-info-value hidden-480"></div>
                         </div>
                         <div class="profile-info-row">
                                 <div class="profile-info-name"> ว/ด/ป เกิด : </div>
@@ -186,7 +194,7 @@
 <div class="profile-user-info profile-user-info-striped" style="margin-top:10px;">
                         <div class="profile-info-row">
                                 <div class="profile-info-name"> ธนาคาร : </div>
-                                <div class="profile-info-value">{{ $vip->mb_mem_bankid }}</div>
+                                <div class="profile-info-value">{{ GetText::expld_text($list_bank[$vip->mb_mem_bankid], 'TH') }}</div>
                         </div>
                         <div class="profile-info-row">
                                 <div class="profile-info-name"> ชื่อบัญชี : </div>

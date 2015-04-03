@@ -101,7 +101,7 @@ class UserController extends BaseController {
                     $message->to(Input::get('email'))->subject('Activate your account');
                 });
 
-                Session::flash('message', 'สร้างผู้ใช้งานระบบใหม่เรียบร้อยแล้ว');
+                Session::flash('success', 'สร้างผู้ใช้งานระบบใหม่เรียบร้อยแล้ว');
                 return Redirect::to('user');
  
             }
@@ -161,7 +161,7 @@ class UserController extends BaseController {
                 // Assign the group to the user
                 $user->addGroup($adminGroup);
 
-                Session::flash('message','แก้ไขข้อมูลผู้ใช้งานระบบเรียบร้อยแล้ว');
+                Session::flash('success','แก้ไขข้อมูลผู้ใช้งานระบบเรียบร้อยแล้ว');
                 return Redirect::to('user');
             }
 
@@ -185,7 +185,7 @@ class UserController extends BaseController {
                 Session::flash('message', 'ลบข้อมูลผู้ใช้งานระบบเรียบร้อยแล้ว');
                 return Redirect::to('user');
             }else{
-                Session::flash('message', 'ไม่พบข้อมูลผู้ใช้งานระบบที่ต้องการลบ');
+                Session::flash('danger', 'ไม่พบข้อมูลผู้ใช้งานระบบที่ต้องการลบ');
                 return Redirect::to('user');
             }   
         } else{ 

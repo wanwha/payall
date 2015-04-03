@@ -2,9 +2,7 @@
 
 
 @section('header_script')
-
 {{ HTML::style('assets/css/ace/jquery-ui.custom.css') }}
-<!-- header_script -->
 @stop
 
 
@@ -52,11 +50,11 @@
                 <thead>
                     <tr>
                         <th class="center" width="50"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></th>
-                        <th class="center hidden-480" width="90">ลำดับ</th>
+                        <th class="center hidden-480" width="80">ลำดับ</th>
                         <th class="center">ชื่อหมวดหมู่</th>
-                        <th class="center hidden-480">วันที่แก้ไข</th>          
-                        <th class="center">สถานะ</th>
-                        <th class="center">จัดการ</th>
+                        <th class="center hidden-480" width="140">วันที่แก้ไข</th>          
+                        <th class="center" width="140">สถานะ</th>
+                        <th class="center" width="100">จัดการ</th>
                     </tr>
                 </thead>
 
@@ -67,26 +65,27 @@
                     <tr>
                         <td class="center"><label class="pos-rel"><input id="{{ 'chkbox-'.$i }}" type="checkbox" class="ace dataTableChkbox" value="{{ $cate->de_set_cate_id }}" /><span class="lbl"></span></label></td>
                         <td class="center hidden-480">{{ $i }}</td>
-                        <td >{{ HTML::link('cate/'.$cate->de_set_cate_id, $cate->de_set_cate_nameth) }}</td>  
+                        <td>{{ HTML::link('cate/'.$cate->de_set_cate_id, $cate->de_set_cate_nameth) }}</td>  
                         <td class="center hidden-480">{{ GetFormat::format_DateTime($cate->de_set_cate_updatedate) }}</td>
-                        
-                        @if($cate->de_set_cate_status=='Enable')
-                        <td class="center">ใช้งาน</td>
-                        @else
-                        <td class="center">ไม่ใช้งาน</td>
-                        @endif
-
+                        <td class="center">
+                            @if($cate->de_set_cate_status=='Enable')
+                                ใช้งาน
+                            @elseif($cate->de_set_cate_status=='Disable')
+                                ไม่ใช้งาน
+                            @else
+                                &nbsp;
+                            @endif
+                        </td>
                         <td class="center">
                             <div class="hidden-sm hidden-xs action-buttons"> 
                                 {{ HTML::decode(link_to('cate/'.$cate->de_set_cate_id.'/edit','<i class="ace-icon fa fa-pencil bigger-130"></i>',array('class'=>'green'))) }}
-                                <a href='javascript:void(0)' class="red bootbox-confirm" 
-                                   onclick=" document.getElementById('hidden_rowid').value='{{ $cate->de_set_cate_id }}';
+                                <a href='javascript:void(0)' class="red bootbox-confirm" onclick=" 
+                                       document.getElementById('hidden_rowid').value='{{ $cate->de_set_cate_id }}';
                                        document.getElementById('hidden_rownameth').value='{{ $cate->de_set_cate_nameth }}';">
                                 <i class="ace-icon fa fa-trash-o bigger-130"></i></a>
                                 {{ Form::open( array( 'url'=>'cate/'.$cate->de_set_cate_id, 'id'=>'form-del-'.$cate->de_set_cate_id ) )}}
                                 {{ Form::hidden( '_method','DELETE' ) }}
                                 {{ Form::close() }}
-
                             </div>
 
                             <div class="hidden-md hidden-lg">
@@ -149,10 +148,10 @@
                     bAutoWidth: false,
                     "aoColumns": [
                         {"bSortable": false},
-                         null, null, null,null,
+                         null, null, null, null,
                         {"bSortable": false}
                     ],
-                    "aaSorting": [ ],
+                    "aaSorting": [],
                 });
 
         //TableTools settings
@@ -331,6 +330,10 @@
 
     })
 
+</script>
+
+<script type="text/javascript">
+    
 jQuery(function ($) {
 
         $(".bootbox-confirm").on(ace.click_event, function () {
@@ -358,7 +361,9 @@ jQuery(function ($) {
 
     })
 
+</script>
 
+<script type="text/javascript">
    jQuery(function ($) {
         
         $(".bootbox-confirm-delall").on(ace.click_event, function () {
@@ -395,13 +400,6 @@ jQuery(function ($) {
     });
 
 </script>
-
-
-
-
-
-    
-
 
 @stop
 

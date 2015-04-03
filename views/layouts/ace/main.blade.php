@@ -107,27 +107,6 @@
                         @yield("pageheader","<span style='background:red;'>MISSING PAGE HEADER</span>")
                     </div>
 
-                    <!-- alert content goes here if needed -->
-                    <div class="row">
-                        <div class="col-sm-10 col-sm-offset-1">
-                            @if( Session::has('success') )
-                            <div class="alert alert-block alert-success">
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </button>
-                                {{ Session::get('success') }}
-                            </div>
-                            @elseif(Session::has('danger'))
-                            <div class="alert alert-block alert-danger">
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </button>
-                                {{ Session::get('danger') }}
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="col-xs-12">
 

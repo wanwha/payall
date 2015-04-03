@@ -15,6 +15,8 @@ class GetText {
         switch ($lang) {
             case 'TH': $langCode = 0; break;
             case 'US': $langCode = 1; break;
+            case 'JP': $langCode = 2; break;
+            case 'CN': $langCode = 3; break;
             default: $langCode = 0; break;
         }
         
@@ -36,7 +38,13 @@ class GetText {
         for($j=0; $j<$count; $j++){
             $newField[$id[$j]] = $expldField[$j];
         }
-        return $newField;
+        
+        if(!empty($newField)){
+            return $newField;
+        }else{
+            return array();
+        }
+        
     }
     
     
@@ -45,6 +53,8 @@ class GetText {
         switch ($lang) {
             case 'TH': $langCode = 0; break;
             case 'US': $langCode = 1; break;
+            case 'JP': $langCode = 2; break;
+            case 'CN': $langCode = 3; break;
             default: $langCode = 0; break;
         }
         

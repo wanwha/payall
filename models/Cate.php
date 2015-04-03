@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Description of Cate
+ *
+ * @author Yamada Yoseigi
+ */
 
 class Cate extends Eloquent {
 
@@ -9,10 +14,22 @@ class Cate extends Eloquent {
         
         protected $guarded = array('*');
         
-        public static function get_nameth_by_id($id){
-            $cate = Cate::where('de_set_cate_id', '=', $id)->select('de_set_cate_nameth')->first();
-            $cate_nameth = $cate->de_set_cate_nameth;
-            return $cate_nameth;
+        
+        /*////////////////////// Validate Input Rules //////////////////////*/
+        
+        protected function validate($input) {
+            $rules = array(
+                'de_set_cate_nameth'     => 'required',
+                'de_set_cate_nameen'     => 'required',
+                'de_set_cate_status'     => 'required',
+            );
+           $message = array(
+                'de_set_cate_nameth.required' => 'กรุณากรอกชื่อหมวดหมู่ภาษาไทย',
+                'de_set_cate_nameen.required' => 'กรุณากรอกชื่อหมวดหมู่ภาษาอังกฤษ',
+                'de_set_cate_status.required' => 'กรุณาเลือกสถานะ',
+            );  
+            return Validator::make($input,$rules,$message);
         }
 
+        
 }

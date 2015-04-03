@@ -19,8 +19,7 @@ class AuthController extends BaseController {
     }
     
     public function register() {
-        try
-	{
+        try {
 		// Let's register a user.
 		$user = Sentry::register(array(
 			'email'    => Input::get('email'),
@@ -37,45 +36,30 @@ class AuthController extends BaseController {
 
                 Session::flash('success','กรุณาตรวจสอบอีเมลของท่าน');
                 return View::make('auth/login');
-	}
-	catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
-	{
+	} catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
 		echo 'Login field is required.';
-	}
-	catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
-	{
+	} catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
 		echo 'Password field is required.';
-	}
-	catch (Cartalyst\Sentry\Users\UserExistsException $e)
-	{
+	} catch (Cartalyst\Sentry\Users\UserExistsException $e) {
 		echo 'User with this login already exists.';
 	}
     }
     
     public function activate($code) {
-        try
-	{
-		// Find the user using the user id
+        try {
 		$user = Sentry::findUserByActivationCode($code);
 
 		// Attempt to activate the user
-		if ($user->attemptActivation($code))
-		{
+		if ($user->attemptActivation($code)) {
                     Session::flash('success','การยืนยันตัวสมบูรณ์ คุณสามารถเข้าสู่ระบบได้เลย');
                     return View::make('auth/login');
-		}
-		else
-		{
+		} else {
                     Session::flash('danger','การยืนยันตัวสมบูรณ์ คุณสามารถเข้าสู่ระบบได้เลย');
                     return View::make('auth/login');
 		}
-	}
-	catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-	{
+	} catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
 		echo 'User was not found.';
-	}
-	catch (Cartalyst\Sentry\Users\UserAlreadyActivatedException $e)
-	{
+	} catch (Cartalyst\Sentry\Users\UserAlreadyActivatedException $e) {
 		echo 'User is already activated.';
 	}
     }
@@ -83,47 +67,33 @@ class AuthController extends BaseController {
     
     public function login() {
 
-        try
-        {
+        try {
                 $credentials = Input::only('email','password');
 
                 // Try to authenticate the user
                 $user = Sentry::authenticate($credentials, false);
                 Session::put('thisUser',$user);
 
+                Session::forget('danger');
                 Session::flash('success','ยินดีต้อนรับ');
                 return View::make('home');
                 
-        }
-        catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
-        {
+        } catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
                 return Redirect::to('backoffice')->with('danger','username หรือ email ผิดพลาด');
-        }
-        catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
-        {
+        } catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
                 return Redirect::to('backoffice')->with('danger','ไม่ได้ใส่รหัสผ่าน');
-        }
-        catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
-        {
+        } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
                 return Redirect::to('backoffice')->with('danger','รหัสผ่านผิด');
-        }
-        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-        {
+        } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
                 return Redirect::to('backoffice')->with('danger','ไม่พบผู้ใช้งาน');
-        }
-        catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
-        {
+        } catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
                 return Redirect::to('backoffice')->with('danger','ไม่ได้ยืนยันตัวเอง');
-        }
-
-        // The following is only required if throttle is enabled
-        catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
-        {
-                echo 'User is suspended.';
-        }
-        catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
-        {
-                echo 'User is banned.';
+          
+            // The following is only required if throttle is enabled
+        } catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e){
+                return Redirect::to('backoffice')->with('danger','User is suspended.');
+        } catch (Cartalyst\Sentry\Throttling\UserBannedException $e) {
+                return Redirect::to('backoffice')->with('danger','User is banned.');
         }
 
     }
@@ -154,8 +124,8 @@ class AuthController extends BaseController {
      
      public function lostpass() {
         if(Request::isMethod('post')){
-            try
-            {
+            
+            try {
                     // Find the user using the user email address
                     $user = Sentry::findUserByLogin(Input::get('email'));
 
@@ -168,12 +138,11 @@ class AuthController extends BaseController {
                     });
                     Session::flash('success','รหัสผ่านถูกส่งไปยังอีเมลของท่านแล้ว');
                     return View::make('auth/login');
-            }
-            catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-            {
+            } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
                     Session::flash('danger','ไม่มีอีเมลนี้');
                     return View::make('auth/lostpass');
             }
+            
         }else{
             return View::make('auth/lostpass');
         }
@@ -182,41 +151,35 @@ class AuthController extends BaseController {
      
     public function newpass() {
         if(Request::isMethod('post')){
-            try
-            {
-                    // Find the user
-                    $user = Sentry::getUserProvider()->findByResetPasswordCode(Input::get('code'));
+            
+            try {
+                
+                $user = Sentry::getUserProvider()->findByResetPasswordCode(Input::get('code'));
 
-                    // Check if the reset password code is valid
-                    if ($user->checkResetPasswordCode(Input::get('code')))
-                    {
-                            // Attempt to reset the user password
-                            if ($user->attemptResetPassword(Input::get('code'), Input::get('newpass')))
-                            {
-                                    $user->password = Input::get('newpass');
-                                    $user->save();
-                                    Session::flash('success','การเปลี่ยนรหัสผ่านสำเร็จ');
-                                    return View::make('auth/login');
-                            }
-                            else
-                            {
-                                    Session::flash('danger','การเปลี่ยนรหัสผ่านไม่สำเร็จ');
-                                    return View::make('auth/newpass');
-                            }
-                    }
-                    else
-                    {
-                            Session::flash('danger','รหัสที่ใช้ในการตรวจสอบไม่ถูกต้อง');
-                            return View::make('auth/newpass');
-                    }
-            }
-            catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-            {
+                // Check if the reset password code is valid
+                if ($user->checkResetPasswordCode(Input::get('code'))) {
+                        // Attempt to reset the user password
+                        if ($user->attemptResetPassword(Input::get('code'), Input::get('newpass'))) {
+                                $user->password = Input::get('newpass');
+                                $user->save();
+                                Session::flash('success','การเปลี่ยนรหัสผ่านสำเร็จ');
+                                return View::make('auth/login');
+                        } else {
+                                Session::flash('danger','การเปลี่ยนรหัสผ่านไม่สำเร็จ');
+                                return View::make('auth/newpass');
+                        }
+                } else {
+                        Session::flash('danger','รหัสที่ใช้ในการตรวจสอบไม่ถูกต้อง');
+                        return View::make('auth/newpass');
+                }
+                
+            } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
                     Session::flash('danger','ไม่มีชื่อผู้ใช้งานนี้');
                     return View::make('auth/newpass');
             }
+            
         }
-         return View::make('auth/newpass');
+        return View::make('auth/newpass');
      }
      
      

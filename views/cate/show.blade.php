@@ -2,11 +2,7 @@
 
 
 @section('header_script')
-{{ HTML::style('assets/css/ace/jquery-ui.custom.css') }}
-{{ HTML::style('assets/css/ace/jquery.gritter.css') }}
-{{ HTML::style('assets/css/ace/select2.css') }}
-{{ HTML::style('assets/css/ace/datepicker.css') }}
-{{ HTML::style('assets/css/ace/bootstrap-editable.css') }}
+<!-- header_script -->
 @stop
 
 
@@ -51,15 +47,13 @@
                     <div class="profile-info-value">ไม่ใช้งาน</div>
                     @endif
             </div>
-           
-           
-         
-            
+
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top:20px;">
             <div class="col-xs-12 center">
-                {{ HTML::link('cate','ย้อนกลับ',array('class'=>'btn btn-info btn-lg','style'=>'margin:20px;')) }}
+                {{ HTML::link('cate/'.$cate->de_set_cate_id.'/edit','แก้ไข',array('class'=>'btn btn-success')) }}
+                {{ HTML::link('cate','ย้อนกลับ',array('class'=>'btn btn-warning','style'=>'margin-left:7px;')) }}
             </div>
         </div>
         
@@ -67,43 +61,9 @@
 </div>
 
 
-
-<!--# Modal Allow Refunds -->
-
-<!--/ Modal Allow Refunds -->
-
-
 @stop
 
 
 @section('footer_script')
-<!--[if lte IE 8]>
-  <script src="{{ URL::asset('assets/js/ace/excanvas.js') }}"></script>
-<![endif]-->
-{{ HTML::script('assets/js/ace/jquery-ui.custom.js') }}
-{{ HTML::script('assets/js/ace/date-time/bootstrap-datepicker.js') }}
-
-<script type="text/javascript">
-    jQuery(function($) {
-
-            //datepicker plugin
-            //link
-            $('.date-picker').datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-            })
-            //show datepicker when clicking on the icon
-            .next().on(ace.click_event, function(){
-                    $(this).prev().focus();
-            });
-
-    });
-</script>
-
-<script type="text/javascript">
-$('#modalRefunds').on('shown.bs.modal', function () {
-    $('#allow_Refunds_Remark').focus()
-})
-</script>
-
+<!-- footer_script -->
 @stop

@@ -68,12 +68,5 @@ class Mem extends Eloquent {
                 );
         }
         
-        /*///////////////////////// Table Relation /////////////////////////*/
-        public function Refund() {
-            return $this->hasMany('Refund');
-        }
-        
-        
-        
         
 }

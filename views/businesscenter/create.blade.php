@@ -8,13 +8,13 @@
 
 @section('breadcrumbs')
 <ul class="breadcrumb">
-    <li><a href="{{ URL::to('businesscenter') }}"><i class="menu-icon fa fa-code-fork fa-lg"></i>จัดการสาขา</a></li>
-    <li class="active">สร้างข้อมูลสาขา</li>
+    <li><a href="{{ URL::to('businesscenter') }}"><i class="menu-icon fa fa-building-o fa-lg"></i>จัดการศูนย์ธุรกิจ</a></li>
+    <li class="active">สร้างศูนย์ธุรกิจ</li>
 </ul>
 @stop
 
 @section('pageheader')
-<h1>สร้างข้อมูลสาขา</h1>
+<h1>สร้างศูนย์ธุรกิจ</h1>
 @stop
 
 @section('pagecontent')
@@ -42,13 +42,11 @@
             <div class="form-group" id="title_thai">
                 {{ Form::label('bu_center_name','ชื่อสาขาภาษาไทย :',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-6">
-                    <div class="row">
                     {{ Form::text('bu_center_name', null, array('class'=>'form-control', 'id'=>'bu_center_name')) }}
-                    <span style="color:#dd5a43"><b>*</b></span>
-                </div>
+                    <!--<span style="color:#dd5a43"><b>*</b></span>-->
                 </div>
                 <div class="col-xs-6 col-sm-2">
-                    {{ Form::select('selectLang_title', Getlist::$list_lang, null, array('id'=>'selectLang_title', 'class'=>'form-control', 'style'=>'width:98%;')) }}
+                    {{ Form::select('selectLang_title', GetList::$list_lang, null, array('id'=>'selectLang_title', 'class'=>'form-control', 'style'=>'width:98%;')) }}
                 </div>
             <div class="col-xs-6 col-sm-2">
                     <a href="javascript:void(0)" id="addTitle" class="btn btn-mini btn-inverse"><i class="fa fa-plus"></i><span style="margin-left:5px;">เพิ่มภาษา</span></a>
@@ -70,7 +68,7 @@
                     {{ Form::textarea('bu_center_detail', null, array('class'=>'form-control', 'id'=>'bu_center_detail', 'rows'=>'3')) }}
                 </div>
                 <div class="col-xs-6 col-sm-2">
-                    {{ Form::select('selectLang_detail', Getlist::$list_lang, null, array('id'=>'selectLang_detail', 'class'=>'form-control', 'style'=>'width:98%;')) }}
+                    {{ Form::select('selectLang_detail', GetList::$list_lang, null, array('id'=>'selectLang_detail', 'class'=>'form-control', 'style'=>'width:98%;')) }}
                 </div>
             <div class="col-xs-6 col-sm-2">
                     <a href="javascript:void(0)" id="addDetail" class="btn btn-mini btn-inverse"><i class="fa fa-plus"></i><span style="margin-left:5px;">เพิ่มภาษา</span></a>
@@ -92,7 +90,7 @@
                     {{ Form::textarea('bu_center_addr', null, array('class'=>'form-control', 'id'=>'bu_center_addr', 'rows'=>'3')) }}
                 </div>
                 <div class="col-xs-6 col-sm-2">
-                    {{ Form::select('selectLang_addr', Getlist::$list_lang, null, array('id'=>'selectLang_addr', 'class'=>'form-control', 'style'=>'width:98%;')) }}
+                    {{ Form::select('selectLang_addr', GetList::$list_lang, null, array('id'=>'selectLang_addr', 'class'=>'form-control', 'style'=>'width:98%;')) }}
                 </div>
             <div class="col-xs-6 col-sm-2">
                     <a href="javascript:void(0)" id="addAddr" class="btn btn-mini btn-inverse"><i class="fa fa-plus"></i><span style="margin-left:5px;">เพิ่มภาษา</span></a>
@@ -211,24 +209,20 @@
                     {{ Form::label('bu_center_status','สถานะใช้งาน :',array('class'=>'col-sm-2 control-label')) }}
                     <div class="radio col-sm-8 ">
                         <label>
-                                {{ Form::radio('bu_center_status', 'Enable', true, array('class'=>'ace')) }}
-                                <span class="lbl">&nbsp;&nbsp;ใช้งาน</span>
-                            </label>&nbsp;&nbsp;&nbsp;
-                            <label>
-                                {{ Form::radio('bu_center_status', 'Disable',  false, array('class'=>'ace') ) }}
-                                <span class="lbl">&nbsp;&nbsp;ไม่ใช้งาน</span>
-                            </label>
-                        </div>
-          </div>
-
-          
-
-
+                            {{ Form::radio('bu_center_status', 'Enable', true, array('class'=>'ace')) }}
+                            <span class="lbl">&nbsp;&nbsp;ใช้งาน</span>
+                        </label>&nbsp;&nbsp;&nbsp;
+                        <label>
+                            {{ Form::radio('bu_center_status', 'Disable',  false, array('class'=>'ace') ) }}
+                            <span class="lbl">&nbsp;&nbsp;ไม่ใช้งาน</span>
+                        </label>
+                    </div>
+            </div>
 
             <div class="form-group">
                 <div class="center">
                     {{ Form::submit('บันทึก' ,array('class'=>'btn btn-success')) }}
-                    <a class="btn btn-danger" href="{{ URL::to('businesscenter') }}" style="margin-left:7px">ยกเลิก</a>
+                    <a class="btn btn-info" href="{{ URL::to('businesscenter') }}" style="margin-left:7px">ยกเลิก</a>
                 </div>
         </div>
         {{ Form::close() }}

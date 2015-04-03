@@ -89,7 +89,7 @@
                                         <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                        <li>{{ HTML::decode(link_to('vip/'.$vip->mb_mem_id.'/edit', '<span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span>', array('class'=>'tooltip-success','data-rel'=>'tooltip','title'=>'Edit'))) }}</li>
+                                        <li>{{ HTML::decode(link_to('vip/'.$vip->mb_mem_id.'/edit', '<span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span>', array('class'=>'tooltip-success', 'data-rel'=>'tooltip', 'title'=>'Edit'))) }}</li>
                                         <li>
                                             <a href='javascript:void(0)' class="red bootbox-confirm tooltip-error" data-rel="tooltip" title="Delete" onclick="
                                                 document.getElementById('hidden_rowid').value='{{ $vip->mb_mem_id }}';

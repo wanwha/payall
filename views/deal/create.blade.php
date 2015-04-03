@@ -95,7 +95,7 @@
             <div class="form-group" id="detail_eng">
                 {{ Form::label('input_detailen','รายละเอียด (อังกฤษ)',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
-                    {{ Form::textarea('input_detailen',null,array('class'=>'form-control', 'id'=>'input_detailen', 'rows'=>'5' )) }}
+                    {{ Form::textarea('input_detailen', null, array('class'=>'form-control', 'id'=>'input_detailen', 'rows'=>'5' )) }}
                 </div>
                 <div class="col-xs-6 col-sm-2">
                     <a href="javascript:void(0)" id="delDetail_eng" class="btn btn-mini btn-light"><i class="fa fa-minus"></i><span style="margin-left:5px;">ลบ</span></a>
@@ -115,7 +115,7 @@
             <div class="form-group">
                 {{ Form::label('input_price','ราคาเต็ม',array('class'=>'col-sm-2 control-label')) }}
                 <div class="col-sm-4">
-                    {{ Form::text('input_price',null,array('class'=>'form-control')) }}
+                    {{ Form::text('input_price', null, array('class'=>'form-control')) }}
                 </div>บาท
             </div>
             
@@ -149,8 +149,8 @@
             
             <div class="row" style="margin-top: 40px;">
                 <div class="col-xs-12 center">
-                    {{ Form::submit('บันทึก' ,array('class'=>'btn btn-success')) }}
-                    {{ HTML::link('deal','ยกเลิก',array('class'=>'btn btn-info','style'=>'margin-left:7px;')) }}
+                    {{ Form::submit('บันทึก' ,array('class'=>'btn btn-info')) }}
+                    {{ HTML::link('deal','ยกเลิก',array('class'=>'btn btn-default','style'=>'margin-left:7px;')) }}
                 </div>
             </div>
 
@@ -209,28 +209,12 @@ function selectShop() {
     return false;
 };
 
-function selectShop2() {
-    $.ajax({
-        type: 'POST',
-        url: '{{ URL::to("deal/ajax_cate") }}',
-        cache: true,
-        data : {input_shopid:$("#input_shopid").val()},
-        success: function(data){
-            $('#shop_cate').remove();
-            $('#shop_scate').remove();
-            $('#shop_branch').after(data);           
-        }
-    });
-    return false;
-};
-
 $("#input_shopid").change(function(){ selectShop(); selectShop2(); });
 $(document).ready(function(){ selectShop(); selectShop2(); });
 
 $(document).one('ajaxloadstart.page', function(e) {
     $('select[name="input_branchid[]"]').bootstrapDualListbox('destroy');
 });
-
 </script>
 
 <script type="text/javascript">
